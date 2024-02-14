@@ -6,7 +6,7 @@ import CompanyImage from "./company-image";
 
 const PAGE_SIZE = 3;
 
-export default function CompanyList() {
+export default function CompanyUserList() {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [error, setError] = useState("");
@@ -28,7 +28,6 @@ export default function CompanyList() {
       const res = await fetch(`${GET_COMPANIES_USER_URL}?${params}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(res);
       if (!res.ok)
         throw new Error("An error occurred while fetching companies");
 

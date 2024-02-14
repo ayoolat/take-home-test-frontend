@@ -2,6 +2,7 @@ import { ADD_IMAGE_URL, UPLOADS_URL } from "@/constants";
 import useToken from "@/hooks/useToken";
 import { Company } from "@/types";
 import Image from "next/image";
+import { Role } from "@/constants";
 import { useRef, useState } from "react";
 
 interface CompanyImageProps {
@@ -75,7 +76,7 @@ export default function CompanyImage({ company, refetch }: CompanyImageProps) {
   return (
     <div className="space-y-2">
       <button
-        disabled={isLoading}
+        disabled={Role.VIEWER ? false : true}
         onClick={handleButtonClick}
         className="disabled:opacity-50 disabled:cursor-not-allowed"
       >
