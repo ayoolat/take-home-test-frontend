@@ -2,6 +2,7 @@
 
 import CompanyForm from "@/components/company-form";
 import CompanyList from "@/components/company-list";
+import CompanyUserList from "@/components/company-list-user";
 import { Role } from "@/constants";
 import useRole from "@/hooks/useRole";
 import useToken from "@/hooks/useToken";
@@ -32,7 +33,9 @@ export default function Dashboard() {
               Logout
             </button>
           </div>
-          {role === Role.VIEWER ? <CompanyList /> : <CompanyForm />}
+          {role === Role.INPUTER ? <CompanyForm /> : null}
+          <br />
+          {role === Role.INPUTER ? <CompanyUserList /> : <CompanyList />}
         </div>
       </div>
     </main>
