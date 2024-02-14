@@ -4,6 +4,7 @@ import { Company } from "@/types";
 import Image from "next/image";
 import { Role } from "@/constants";
 import { useRef, useState } from "react";
+import useRole from "@/hooks/useRole";
 
 interface CompanyImageProps {
   company: Company;
@@ -15,6 +16,7 @@ export default function CompanyImage({ company, refetch }: CompanyImageProps) {
   const [error, setError] = useState("");
   const token = useToken();
   const inputRef = useRef<HTMLInputElement>(null);
+  const role = useRole();
 
   const handleButtonClick = () => {
     inputRef.current?.click();
@@ -76,7 +78,7 @@ export default function CompanyImage({ company, refetch }: CompanyImageProps) {
   return (
     <div className="space-y-2">
       <button
-        disabled={Role.VIEWER ? false : true}
+        disabled={role == Role.VIEWER ? false : true}
         onClick={handleButtonClick}
         className="disabled:opacity-50 disabled:cursor-not-allowed"
       >
